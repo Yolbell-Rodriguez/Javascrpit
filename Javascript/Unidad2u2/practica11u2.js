@@ -304,6 +304,8 @@ que el primer resultado es 7 y que el segundo es 28 (7 × 4).
 Después, sin modificar operacionesEncadenadas, llámala de nuevo pasando como op2 una
 función flecha anónima que calcule otra operación, por ejemplo la división.
 */ 
+/*
+30-
 function suma(x,y){
 	return x+y;
 }
@@ -323,4 +325,133 @@ operacionesEncadenadas(3, 4,suma,multiplicar, (r1,r2)=>{
 
 operacionesEncadenadas(3,4,suma,(x, y) => x/y, (r1,r2) => {
 	console.log(`el primer resultado es ${r1} y el segundo es ${r2}`);});
+*/
 
+/*
+31-Crea un array de 5 números de dos formas distintas. Investiga qué ocurre al crear un array con el constructor
+pasándole un único número, y cómo crear correctamente un array que contenga solo ese número.
+Explica la diferencia en un comentario.
+
+si le pasas un solo numero entiende que el espacio es del numero que pongas y si le pasas varios entiende que son los elementos que les quieres meter
+
+const numerosLiteral = [10,20,30,40,50];
+const numerosConstructor = new Array(1,2,3,4,5);
+
+// Esto crea un array con 5 espacios vacíos (longitud 5, sin elementos):
+const arrayEquivocado = new Array(5);
+console.log(arrayEquivocado); // Output: [ <5 empty items> ] (length: 5)
+
+//Usando la sintaxis literal
+const arrayConSoloUnNumero1 = [5];
+console.log(arrayConSoloUnNumero1); // Output: [ 5 ] (length: 1)
+
+//Usando Array.of()
+const arrayConSoloUnNumero2 = Array.of(5);
+console.log(arrayConSoloUnNumero2); // Output: [ 5 ] (length: 1)
+*/
+
+/*32-Ordena el array [10, 9, 1, 100, 25] con el método de ordenación de Array sin argumentos.
+Explica por qué el resultado no es el esperado
+y corrígelo para que se ordene de menor a mayor. Después ordénalo de mayor a menor.
+
+const numerosDesordenados =[10, 9, 1, 100, 25];
+
+//metodo de comparacion, si es negativo a va primero 
+const ordenMal = [... numerosDesordenados].sort();
+console.log("por alfabeto", ordenMal);
+
+//
+const menorAMayor = [... numerosDesordenados].sort((a, b)=> a-b);
+console.log ("de mayor a menor", menorAMayor);
+
+//lo mismo que antes pero al reves para que los mayores vayan primero 
+const mayorAMenor =[... numerosDesordenados].sort((a,b)=> b-a);
+console.log("de menor a mayor ", mayorAMenor);
+*/
+/*
+34-Crea una función pares(numeros) que devuelva un nuevo array con los números pares. El array original no debe modificarse.
+
+function pares(numeros){
+	return numeros.filter(numero => numero%2  ===0);
+}
+
+const arrayOriginal = [1,2,3,4,5,6,7,8,9,10];
+const numerosPares= pares(arrayOriginal);
+
+console.log("array de pares: ", numerosPares);
+console.log("Array original: ", arrayOriginal);*/
+
+/*
+35-Crea una función palabraMasLarga(palabras) que devuelva la palabra más larga de un array de palabras;
+si hay empate, la primera. Resuélvelo de dos formas distintas.
+
+function palabraMasLargaPequenia(palabras){
+	if(!palabras || palabras.lenght ===0)return"";
+
+	return palabras.reduce((masLarga, palabraActual) =>{
+		return palabraActual.lenght > masLarga.lenght ? palabraActual:masLarga;
+	},palabras[0]);
+}
+const listaPalabras1 = ["casa", "ordenador", "programa", "sol", "programacion"];
+console.log(palabraMasLargaPequenia(listaPalabras1));
+
+const listaPalabras2= ["sol", "sal", "uno"];
+console.log(palabraMasLargaPequenia(listaPalabras2));
+*/
+
+/*
+36-Crea una función sinDuplicados(array) que devuelva un nuevo array sin elementos repetidos. Ampliación: resuélvelo de una segunda forma diferente.0
+
+function sinDuplicados(array){
+	return[...new Set(array)];
+
+}
+
+function sinDuplicados2 (array){
+	return array.filter((el, i) => array.indexOf((el) === i));
+}
+console.log(sinDuplicados([1,2,2,3,1,4,"a","a"]));
+console.log(sinDuplicados2([1,2,2,3,1,4,"a","a"]));
+*/
+
+/*37-Usa el siguiente array para el ejercicio 37:
+const países = ["México", "Japón", "Italia", "Australia", "Brasil", "Canadá", "Francia", "Alemania", "India", "Argentina", "España", "China", "Sudáfrica", "Rusia", "Corea del Sur", "Reino Unido", "Estados Unidos", "Indonesia", "Egipto", "Turquía"];
+Haz las siguientes funciones que recibirán un array como el de arriba como parámetro y el resto de datos necesarios como parámetro y mostraran los datos en la página como se indique 
+mostrarArray(array): muestra en la página el número de elementos y, a continuación, el contenido del array en una lista numerada (<ol>).
+mostrarArrayInvertido(array): invierte el orden del array y lo muestra con mostrarArray. El array queda modificado. Ampliación: haz una versión que no modifique el original y otra que lo muestre ordenado alfabéticamente, colocando correctamente los nombres con tilde.
+agregarElemento(array, elemento, posicion): posicion puede ser "inicio", "fin" o un número. Inserta el elemento en esa posición y devuelve la posición en la que se ha insertado, o -1 si la posición no es válida. Después se muestra el array con mostrarArray.
+eliminarPorPosicion(array, posicion): posicion puede ser "inicio", "fin" o un número. Elimina el elemento de esa posición y lo devuelve, o devuelve undefined si la posición no es válida. Después se muestra el array con mostrarArray.
+buscarPais(array, pais): devuelve la posición del país o -1 si no lo encuentra. Ampliación: que la búsqueda no distingue mayúsculas ni tildes.
+agregarPais(array, pais): comprueba si el país existe usando buscarPais. Si existe, devuelve su posición; si no, lo añade al final y devuelve la posición en la que lo ha insertado. Se muestra un mensaje indicando lo que ha ocurrido.
+eliminarPais(array, pais): elimina el país usando buscarPais. Devuelve la posición en la que estaba, o -1 si no lo ha encontrado. El array no debe quedar con huecos tras la eliminación. Se muestra un mensaje con el resultado. Pregunta: prueba a borrar un país con el operador delete. ¿Qué pasa con la longitud del array y con mostrarArray? ¿Por qué no es una forma válida de eliminar?
+extraerYUnir(array, otros): sin modificar el original, obtén un array con los 5 primeros países, otro con los 3 últimos y otro que una paises con el array otros. Muestra los tres resultados con mostrarArray.
+*/
+
+/*38-Define una función a la que le pasaremos un número y el tipo de redondeo a realizar.
+La función devolverá el resultado del redondeo y además mostrará el valor del redondeo
+en el documento junto a un mensaje indicando el tipo de redondeo.*/
+
+
+
+function redondear(numero, tipo){
+	let resultado;
+	if (tipo == "round") resultado = Math.round(numero);
+	if (tipo == "floor") resultado = Math.floor(numero);
+	if (tipo == "ceil") resultado  = Math.ceil(numero);
+
+	document.write("Redondear "+ tipo + " de "+ numero + ": "+ resultado + "<br>");
+	return resultado;
+}
+redondear(4.5, "round");
+redondear(4.5, "floor");
+redondear(4.1, "ceil");
+
+/*
+39-Define una función a la que le pasaremos dos enteros (limite inferior y límite superior) y la función
+nos devolverá una entero aleatorio en el rango [limiteInferior,limiteSuperior).
+Además mostrará en el documento un mensaje indicando el número aleatorio y el rango en el que se encuentra.
+*/
+
+/*40-Define una función a la que le pasaremos un ángulo y la función trigonométrica a aplicar y nos devolverá
+el resultado de aplicar la función trigonométrica  y mostrará en el documento la operación aplicada con el resultado.
+*/
