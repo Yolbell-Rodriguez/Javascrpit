@@ -429,28 +429,41 @@ extraerYUnir(array, otros): sin modificar el original, obtén un array con los 5
 
 /*38-Define una función a la que le pasaremos un número y el tipo de redondeo a realizar.
 La función devolverá el resultado del redondeo y además mostrará el valor del redondeo
-en el documento junto a un mensaje indicando el tipo de redondeo.*/
+en el documento junto a un mensaje indicando el tipo de redondeo.
 
 
 
 function redondear(numero, tipo){
 	let resultado;
 	if (tipo == "round") resultado = Math.round(numero);
-	if (tipo == "floor") resultado = Math.floor(numero);
-	if (tipo == "ceil") resultado  = Math.ceil(numero);
+	else if (tipo == "floor") resultado = Math.floor(numero);
+	else if(tipo == "ceil") resultado  = Math.ceil(numero);
+	else if(tipo == "trunc") resultado = Math.trunc(numero);
 
-	document.write("Redondear "+ tipo + " de "+ numero + ": "+ resultado + "<br>");
+	console.log("Redondear "+ tipo + " de "+ numero + ": " + resultado + "<br>");
 	return resultado;
 }
 redondear(4.5, "round");
 redondear(4.5, "floor");
 redondear(4.1, "ceil");
+redondear(5.5, "trunc");
+*/
 
 /*
 39-Define una función a la que le pasaremos dos enteros (limite inferior y límite superior) y la función
 nos devolverá una entero aleatorio en el rango [limiteInferior,limiteSuperior).
 Además mostrará en el documento un mensaje indicando el número aleatorio y el rango en el que se encuentra.
 */
+function NumAleatorioEnRango(limiteInferior, limiteSuperior){
+	let aleatorio = Math.floor((Math.random() * limiteSuperior-limiteInferior) + limiteInferior);
+	console.log("Numero aleatorio "+ aleatorio +" en el rango( " +limiteInferior+ ", " + limiteSuperior+ ")");
+	return aleatorio;
+}
+	NumAleatorioEnRango(1,10);
+	NumAleatorioEnRango(50, 100);
+
+
+
 
 /*40-Define una función a la que le pasaremos un ángulo y la función trigonométrica a aplicar y nos devolverá
 el resultado de aplicar la función trigonométrica  y mostrará en el documento la operación aplicada con el resultado.
